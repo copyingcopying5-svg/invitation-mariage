@@ -226,7 +226,7 @@ function RSVP() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Ex. Jean-Pierre Kabeya"
+                placeholder="Ex. Jean-Pierre Kabeya / Couple Jean-Pierre Kabeya"
                 className="
                   w-full
                   px-4
