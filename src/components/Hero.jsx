@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="accueil" className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
       {/* Image de fond */}
       <div 
@@ -26,37 +26,22 @@ function Hero() {
       >
 
         <p className="uppercase tracking-[6px] text-sm mb-6">
-          Nous avons le plaisir de vous inviter
+          SAVE THE DATE
         </p>
 
 
-        <h1 className="text-6xl md:text-8xl font-bold mb-6">
-          ERIC
+        <h1 className="text-6xl md:text-8xl font-bold mb-6" style={{ fontFamily: "'Great Vibes', cursive" }}>
+          JEDIDIA
           <br />
           &
           <br />
-          ESTHER
+          DEFI
         </h1>
 
 
         <p className="text-xl md:text-2xl mb-8">
-          18 Décembre 2026
+          18 Septembre 2026
         </p>
-
-
-        <button
-          className="
-          px-8 py-3 
-          border border-white 
-          rounded-full
-          hover:bg-white 
-          hover:text-black
-          transition
-          "
-        >
-          Découvrir
-        </button>
-
 
       </motion.div>
 

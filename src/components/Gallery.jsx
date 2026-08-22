@@ -15,7 +15,7 @@ function Gallery() {
 
   return (
 
-    <section className="py-24 px-6 bg-[#FAF8F5]">
+    <section id="galerie" className="py-24 px-6 bg-[#FAF8F5]">
 
       <div className="max-w-6xl mx-auto">
 

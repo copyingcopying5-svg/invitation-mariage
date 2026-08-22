@@ -86,7 +86,7 @@ function Countdown() {
 
   return (
 
-    <section className="py-24 px-6 bg-[#222] text-white">
+    <section id="compte-a-rebours" className="py-24 px-6 bg-[#222] text-white">
 
 
       <div className="max-w-5xl mx-auto text-center">

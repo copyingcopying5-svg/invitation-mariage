@@ -1,0 +1,145 @@
+Les fonctionnalités
+Partie publique
+1. Page d'accueil
+
+Une belle page avec
+
+photo des mariés
+compte à rebours
+musique
+bouton
+
+Ouvrir mon invitation
+
+2. Invitation personnalisée
+
+Lorsque quelqu'un ouvre
+
+https://invite.monsite.com/i/5d8f4a8...
+
+il voit
+
+Cher Jean Kabeya,
+
+Vous êtes cordialement invité au mariage de
+
+Jean-Paul
+&
+Evodie
+
+Son nom est récupéré automatiquement.
+
+3. Programme
+
+Civil
+
+Religieux
+
+Réception
+
+avec heures et lieux.
+
+4. Google Maps
+
+Chaque lieu possède
+
+Voir l'itinéraire
+5. Galerie
+
+Photos du couple.
+
+6. QR Code
+
+Chaque invité possède son QR Code personnel.
+
+7. Confirmation
+
+Deux boutons
+
+Je confirme
+
+Je ne pourrai pas venir
+8. Téléchargement
+
+PDF
+
+Image
+
+Partager WhatsApp
+
+Partie Administration
+
+Accessible uniquement aux organisateurs.
+
+Tableau de bord
+
+Tu verras
+
+450 invités
+
+320 confirmations
+
+45 refus
+
+85 sans réponse
+Gestion des invités
+
+Tu peux
+
+Ajouter
+
+Modifier
+
+Supprimer
+
+Importer depuis Excel
+
+Exporter
+
+Exemple
+
+Nom
+
+Téléphone
+
+Nombre de places
+
+Table
+
+Statut
+
+Lien
+
+QR Code
+
+Envoi WhatsApp
+
+Un bouton
+
+Envoyer
+
+ouvre directement WhatsApp avec le lien personnalisé.
+
+Scanner QR Code
+
+Le protocole ouvre
+
+invite.monsite.com/check
+
+Il clique
+
+Scanner
+
+Le téléphone lit
+
+Jean Kabeya
+
+Invitation valide
+
+2 personnes
+
+Puis
+
+Entrée enregistrée
+
+Impossible d'utiliser le même QR Code deux fois.
