@@ -1,107 +1,61 @@
 import { motion } from "framer-motion";
-import { FaCalendarAlt, FaClock, FaMapMarkerAlt } from "react-icons/fa";
 
 function Event() {
-
-  const details = [
-    {
-      icon: <FaCalendarAlt />,
-      title: "Date",
-      text: "18 Décembre 2026"
-    },
-    {
-      icon: <FaClock />,
-      title: "Heure",
-      text: "15h00"
-    },
-    {
-      icon: <FaMapMarkerAlt />,
-      title: "Lieu",
-      text: "Salle des fêtes - Lubumbashi"
-    }
-  ];
-
-
   return (
-    <section id="grand-jour" className="py-24 px-6 bg-white">
-
+    <section
+      id="dress-code"
+      className="py-24 px-6 bg-[#FAF8F5]"
+    >
       <div className="max-w-6xl mx-auto text-center">
 
-
         <motion.div
-          initial={{opacity:0, y:30}}
-          whileInView={{opacity:1, y:0}}
-          transition={{duration:0.8}}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
 
-          <p className="text-[#C8A54D] uppercase tracking-[4px] text-sm mb-4">
-            Le grand jour
-          </p>
+          {/* TITRE */}
 
-
-          <h2 className="text-5xl mb-12">
-            Rendez-vous pour célébrer
+          <h2 className="
+            text-5xl
+            md:text-6xl
+            font-serif
+            text-black
+            mb-8
+          ">
+            Dress Code
           </h2>
+
+          {/* PETITE LIGNE DÉCORATIVE */}
+
+          <div className="
+            w-48
+            h-[2px]
+            mx-auto
+            mb-7
+            bg-gradient-to-r
+            from-[#f3b6b6]
+            via-[#e8c77a]
+            to-[#f3b6b6]
+          " />
+
+          {/* THÈME */}
+
+          <p className="
+            text-3xl
+            md:text-4xl
+            text-gray-700
+            tracking-wide
+          ">
+            Chic & Glamour
+          </p>
 
         </motion.div>
 
-
-
-        <div className="grid md:grid-cols-3 gap-8">
-
-
-          {details.map((item, index)=>(
-
-            <motion.div
-              key={index}
-              initial={{opacity:0, y:40}}
-              whileInView={{opacity:1, y:0}}
-              transition={{duration:0.5, delay:index*0.2}}
-              className="
-              bg-[#FAF8F5]
-              p-8
-              rounded-2xl
-              shadow-sm
-              hover:shadow-xl
-              transition
-              "
-            >
-
-              <div className="
-              text-[#C8A54D]
-              text-4xl
-              mb-5
-              flex
-              justify-center
-              ">
-                {item.icon}
-              </div>
-
-
-              <h3 className="text-2xl mb-3">
-                {item.title}
-              </h3>
-
-
-              <p className="text-gray-600">
-                {item.text}
-              </p>
-
-
-            </motion.div>
-
-          ))}
-
-
-        </div>
-
-
       </div>
-
-
     </section>
   );
 }
-
 
 export default Event;

@@ -25,23 +25,13 @@ function Hero() {
         className="relative z-10 text-center text-white px-6"
       >
 
-        <p className="uppercase tracking-[6px] text-sm mb-6">
-          SAVE THE DATE
-        </p>
-
-
-        <h1 className="text-6xl md:text-8xl font-bold mb-6" style={{ fontFamily: "'Great Vibes', cursive" }}>
+        <h1 className="text-6xl md:text-8xl font-bold mb-6">
           JEDIDIA
           <br />
           &
           <br />
           DEFI
         </h1>
-
-
-        <p className="text-xl md:text-2xl mb-8">
-          18 Septembre 2026
-        </p>
 
       </motion.div>
 

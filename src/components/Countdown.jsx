@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 function Countdown() {
 
-  const targetDate = new Date("December 18, 2026 15:00:00").getTime();
+  const targetDate = new Date("October 24, 2026 18:00:00").getTime();
 
 
   const calculateTime = () => {
@@ -97,12 +97,6 @@ function Countdown() {
           whileInView={{opacity:1,y:0}}
           transition={{duration:0.8}}
         >
-
-          <p className="text-[#C8A54D] uppercase tracking-[4px] text-sm mb-4">
-            Le compte à rebours
-          </p>
-
-
           <h2 className="text-5xl mb-12">
             Plus que quelques instants
           </h2>

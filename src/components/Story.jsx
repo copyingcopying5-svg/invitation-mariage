@@ -27,24 +27,27 @@ function Story() {
           transition={{ duration: 0.8 }}
         >
 
+          <h2 className="text-5xl mb-6">
+            SAVE THE DATE
+          </h2>
+
+          <p className="text-gray-600 leading-8">
+            24 OCTOBRE 2026 à 18H00 <br />
+            AU CHAPITEAU SHEKINAH EVENT <br />
+            N°2, Croisement des avenues Munua et Dikuku. <br />
+            Golf Météo Faustin <br />
+            Réf : Arret la Katagaise 
+          </p>
+
           <p className="text-[#C8A54D] uppercase tracking-[4px] text-sm mb-4">
-            Notre histoire
+            <br />DEUX COEURS UNE DESTINEE
           </p>
 
 
-          <h2 className="text-5xl mb-6">
-            Deux cœurs,
-            <br />
-            une destinée
-          </h2>
-
-
           <p className="text-gray-600 leading-8">
-            Notre histoire est un témoignage de grâce,
-            de patience et d'amour. Au fil du temps,
-            Dieu nous a conduits sur un chemin merveilleux
-            jusqu'à ce jour où nous choisissons de marcher
-            ensemble pour toute une vie.
+            Pas à pas la providence a guidé nos chemins jusqu'à ce point de rencontre parfait.
+            Ce qui n'était qu'un espoir est devenu notre plus belle certitude : marcher ensemble,
+            sous le regard du Très-Haut, pour tout le reste de notre voyage.
           </p>
 
 

@@ -1,242 +1,134 @@
 import { useState } from "react";
+import { supabase } from "../lib/supabase";
 
 function RSVP() {
-  const [events, setEvents] = useState([]);
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-
-  const eventOptions = [
-    {
-      id: "civil",
-      label: "Mariage civil",
-    },
-    {
-      id: "religieux",
-      label: "Mariage religieux",
-    },
-    {
-      id: "soiree",
-      label: "Soirée",
-    },
-  ];
-
+  const [attendance, setAttendance] = useState("");
+  const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleEventChange = (eventId) => {
-    setEvents((current) => {
-      if (current.includes(eventId)) {
-        return current.filter((id) => id !== eventId);
-      }
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-      return [...current, eventId];
-    });
-  };
+  if (
+    !name.trim() ||
+    !email.trim() ||
+    !phone.trim() ||
+    !attendance
+  ) {
+    alert("Veuillez compléter tous les champs obligatoires.");
+    return;
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const { error } = await supabase
+    .from("rsvp")
+    .insert([
+      {
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+        attendance,
+        message: message.trim() || null,
+      },
+    ]);
 
-    if (!name.trim() || !phone.trim() || events.length === 0) {
-      alert("Veuillez compléter tous les champs.");
+    if (error) {
+      console.error("Erreur RSVP :", error);
+
+      alert(
+        `Erreur Supabase : ${error.message}`
+      );
+
       return;
     }
 
-    console.log({
-      name,
-      phone,
-      events,
-    });
-
-    setSubmitted(true);
-  };
+  setSubmitted(true);
+};
 
   return (
     <section
       id="confirmation"
       className="py-24 px-6 bg-[#faf8f5]"
     >
-      <div className="max-w-xl mx-auto">
+      <div className="max-w-2xl mx-auto">
 
         {/* TITRE */}
 
-        <div className="text-center mb-10">
-          <p className="uppercase tracking-[4px] text-xs text-[#c8a54d] mb-3">
-            Save the Date
-          </p>
+        <div className="text-center mb-12">
 
-          <h2 className="text-3xl md:text-4xl text-gray-800">
-            Votre participation
+          <h2 className="
+            text-3xl
+            md:text-4xl
+            text-gray-800
+          ">
+            RSVP
           </h2>
 
-          <p className="text-gray-500 mt-4">
-            Indiquez-nous les moments que vous souhaitez partager
-            avec nous.
+          <p className="
+            text-gray-500
+            mt-4
+            max-w-md
+            mx-auto
+            leading-7
+          ">
+            Merci de bien vouloir confirmer votre présence.
           </p>
+
         </div>
 
 
+        {/* FORMULAIRE */}
 
-        {submitted ? (
-            <div className="text-center py-12">
+        {!submitted ? (
 
-              <div className="text-[#c8a54d] text-5xl mb-6">
-                ♡
-              </div>
-
-              <p className="uppercase tracking-[4px] text-xs text-[#c8a54d] mb-4">
-                Merci pour votre réponse
-              </p>
-
-              <h3 className="text-3xl md:text-4xl text-gray-800 mb-5">
-                Merci {name} !
-              </h3>
-
-              <p className="text-gray-500 leading-7 max-w-md mx-auto">
-                Votre réponse a bien été enregistrée.
-                Nous sommes heureux de savoir que vous
-                serez parmi nous pour partager ces moments
-                si précieux.
-              </p>
-
-              <p className="mt-8 text-[#c8a54d] italic text-lg">
-                À très bientôt pour célébrer ensemble ♡
-              </p>
-
-            </div>
-          ) : (
-
-        <form onSubmit={handleSubmit}>
-
-          {/* ÉVÉNEMENTS */}
-
-          <div className="mb-10">
-
-            <h3 className="text-lg font-medium text-gray-800 mb-5">
-              À quels événements participerez-vous ?
-            </h3>
-
-            <div className="space-y-3">
-
-              {eventOptions.map((event) => (
-
-                <label
-                  key={event.id}
-                  className="
-                    flex
-                    items-center
-                    gap-4
-                    p-4
-                    bg-white
-                    border
-                    border-gray-200
-                    rounded-xl
-                    cursor-pointer
-                    hover:border-[#c8a54d]
-                    transition
-                  "
-                >
-
-                  <input
-                    type="checkbox"
-                    checked={events.includes(event.id)}
-                    onChange={() =>
-                      handleEventChange(event.id)
-                    }
-                    className="
-                      w-5
-                      h-5
-                      accent-[#c8a54d]
-                    "
-                  />
-
-                  <span className="text-gray-700">
-                    {event.label}
-                  </span>
-
-                </label>
-
-              ))}
-
-
-              {/* TOUT */}
-
-              <label
-                className="
-                  flex
-                  items-center
-                  gap-4
-                  p-4
-                  bg-[#f5efe3]
-                  border
-                  border-[#c8a54d]
-                  rounded-xl
-                  cursor-pointer
-                "
-              >
-
-                <input
-                  type="checkbox"
-                  checked={
-                    events.length === eventOptions.length
-                  }
-                  onChange={() => {
-                    if (events.length === eventOptions.length) {
-                      setEvents([]);
-                    } else {
-                      setEvents(
-                        eventOptions.map((event) => event.id)
-                      );
-                    }
-                  }}
-                  className="
-                    w-5
-                    h-5
-                    accent-[#c8a54d]
-                  "
-                />
-
-                <span className="font-medium text-gray-800">
-                  Je participerai à tout
-                </span>
-
-              </label>
-
-            </div>
-
-          </div>
-
-
-          {/* INFORMATIONS PERSONNELLES */}
-
-          <div className="space-y-6">
-
-            <h3 className="text-lg font-medium text-gray-800">
-              Vos informations
-            </h3>
-
+          <form
+            onSubmit={handleSubmit}
+            className="
+              bg-white
+              rounded-[28px]
+              p-7
+              md:p-10
+              shadow-[0_10px_40px_rgba(0,0,0,0.06)]
+              border
+              border-gray-100
+            "
+          >
 
             {/* NOM */}
 
-            <div>
+            <div className="mb-7">
 
-              <label className="block text-sm text-gray-600 mb-2">
-                Nom complet
+              <label className="
+                block
+                text-base
+                text-gray-800
+                mb-3
+              ">
+                Nom et prénom
               </label>
 
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Ex. Jean-Pierre Kabeya / Couple Jean-Pierre Kabeya"
+                placeholder="Votre nom et prénom"
+                required
                 className="
                   w-full
-                  px-4
+                  px-5
                   py-4
-                  bg-white
+                  rounded-xl
+                  bg-[#fafafa]
                   border
                   border-gray-200
-                  rounded-xl
+                  text-gray-700
                   outline-none
+                  placeholder:text-gray-400
                   focus:border-[#c8a54d]
+                  focus:ring-1
+                  focus:ring-[#c8a54d]
                   transition
                 "
               />
@@ -244,11 +136,56 @@ function RSVP() {
             </div>
 
 
-            {/* TÉLÉPHONE */}
+            {/* EMAIL */}
 
-            <div>
+            <div className="mb-7">
 
-              <label className="block text-sm text-gray-600 mb-2">
+              <label className="
+                block
+                text-base
+                text-gray-800
+                mb-3
+              ">
+                Adresse e-mail
+              </label>
+
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Votre adresse e-mail"
+                required
+                className="
+                  w-full
+                  px-5
+                  py-4
+                  rounded-xl
+                  bg-[#fafafa]
+                  border
+                  border-gray-200
+                  text-gray-700
+                  outline-none
+                  placeholder:text-gray-400
+                  focus:border-[#c8a54d]
+                  focus:ring-1
+                  focus:ring-[#c8a54d]
+                  transition
+                "
+              />
+
+            </div>
+
+
+            {/* TELEPHONE */}
+
+            <div className="mb-8">
+
+              <label className="
+                block
+                text-base
+                text-gray-800
+                mb-3
+              ">
                 Numéro de téléphone
               </label>
 
@@ -256,47 +193,270 @@ function RSVP() {
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="+243 ..."
+                placeholder="Votre numéro de téléphone"
+                required
                 className="
                   w-full
-                  px-4
+                  px-5
                   py-4
-                  bg-white
+                  rounded-xl
+                  bg-[#fafafa]
                   border
                   border-gray-200
-                  rounded-xl
+                  text-gray-700
                   outline-none
+                  placeholder:text-gray-400
                   focus:border-[#c8a54d]
+                  focus:ring-1
+                  focus:ring-[#c8a54d]
                   transition
                 "
               />
 
             </div>
 
-          </div>
+
+            {/* PARTICIPATION */}
+
+            <div className="mb-8">
+
+              <label className="
+                block
+                text-base
+                text-gray-800
+                mb-4
+              ">
+                Participer
+              </label>
+
+              <div className="
+                grid
+                grid-cols-1
+                sm:grid-cols-2
+                gap-4
+              ">
+
+                {/* OUI */}
+
+                <label
+                  className={`
+                    flex
+                    items-center
+                    gap-3
+                    px-5
+                    py-5
+                    rounded-xl
+                    border
+                    cursor-pointer
+                    transition
+                    ${
+                      attendance === "present"
+                        ? "border-[#c8a54d] bg-[#faf6eb]"
+                        : "border-gray-200 bg-white hover:border-[#c8a54d]"
+                    }
+                  `}
+                >
+
+                  <input
+                    type="radio"
+                    name="attendance"
+                    value="present"
+                    checked={attendance === "present"}
+                    onChange={(e) =>
+                      setAttendance(e.target.value)
+                    }
+                    className="
+                      w-5
+                      h-5
+                      accent-[#c8a54d]
+                      shrink-0
+                    "
+                  />
+
+                  <span className="text-gray-700">
+                    Oui, je serai présent(e)
+                  </span>
+
+                </label>
 
 
-          {/* BOUTON */}
+                {/* NON */}
 
-          <button
-            type="submit"
+                <label
+                  className={`
+                    flex
+                    items-center
+                    gap-3
+                    px-5
+                    py-5
+                    rounded-xl
+                    border
+                    cursor-pointer
+                    transition
+                    ${
+                      attendance === "absent"
+                        ? "border-[#c8a54d] bg-[#faf6eb]"
+                        : "border-gray-200 bg-white hover:border-[#c8a54d]"
+                    }
+                  `}
+                >
+
+                  <input
+                    type="radio"
+                    name="attendance"
+                    value="absent"
+                    checked={attendance === "absent"}
+                    onChange={(e) =>
+                      setAttendance(e.target.value)
+                    }
+                    className="
+                      w-5
+                      h-5
+                      accent-[#c8a54d]
+                      shrink-0
+                    "
+                  />
+
+                  <span className="text-gray-700">
+                    Désolé, je n'y serai pas
+                  </span>
+
+                </label>
+
+              </div>
+
+            </div>
+
+
+            {/* MESSAGE */}
+
+            <div className="mb-8">
+
+              <label className="
+                block
+                text-base
+                text-gray-800
+                mb-3
+              ">
+                Message
+              </label>
+
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Votre message"
+                rows="6"
+                className="
+                  w-full
+                  px-5
+                  py-4
+                  rounded-xl
+                  bg-[#fafafa]
+                  border
+                  border-gray-200
+                  text-gray-700
+                  outline-none
+                  placeholder:text-gray-400
+                  focus:border-[#c8a54d]
+                  focus:ring-1
+                  focus:ring-[#c8a54d]
+                  transition
+                  resize-none
+                "
+              />
+
+            </div>
+
+
+            {/* BOUTON */}
+
+            <button
+              type="submit"
+              className="
+                w-full
+                py-4
+                rounded-xl
+                bg-[#c8a54d]
+                text-white
+                text-base
+                font-medium
+                tracking-wide
+                hover:bg-[#b5943f]
+                active:scale-[0.99]
+                transition
+              "
+            >
+              Répondre
+            </button>
+
+          </form>
+
+        ) : (
+
+          /* MESSAGE APRÈS RÉPONSE */
+
+          <div
             className="
-              w-full
-              mt-8
-              py-4
-              rounded-xl
-              bg-[#c8a54d]
-              text-white
-              font-medium
-              tracking-wide
-              hover:bg-[#b5943f]
-              transition
+              bg-white
+              rounded-[28px]
+              p-10
+              md:p-14
+              text-center
+              shadow-[0_10px_40px_rgba(0,0,0,0.06)]
+              border
+              border-gray-100
             "
           >
-            Confirmer mes choix
-          </button>
 
-        </form>
+            <div className="
+              text-[#c8a54d]
+              text-5xl
+              mb-6
+            ">
+              ♡
+            </div>
+
+            <p className="
+              uppercase
+              tracking-[4px]
+              text-xs
+              text-[#c8a54d]
+              mb-4
+            ">
+              Merci pour votre réponse
+            </p>
+
+            <h3 className="
+              text-3xl
+              md:text-4xl
+              text-gray-800
+              mb-5
+            ">
+              Merci {name} !
+            </h3>
+
+            <p className="
+              text-gray-500
+              leading-7
+              max-w-md
+              mx-auto
+            ">
+              {attendance === "present"
+                ? "Votre présence a bien été confirmée. Nous sommes heureux de savoir que vous serez parmi nous pour partager ce moment précieux."
+                : "Nous vous remercions de nous avoir informés. Votre réponse a bien été enregistrée."
+              }
+            </p>
+
+            <p className="
+              mt-8
+              text-[#c8a54d]
+              italic
+              text-lg
+            ">
+              À très bientôt ♡
+            </p>
+
+          </div>
 
         )}
 

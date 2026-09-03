@@ -6,6 +6,7 @@ import {
   FaHome,
   FaHeart,
   FaCalendarAlt,
+  FaTshirt,
   FaMapMarkerAlt,
   FaClock,
   FaImages,
@@ -27,29 +28,29 @@ function Navigation() {
       icon: <FaHeart />,
     },
     {
-      label: "Le grand jour",
-      target: "grand-jour",
-      icon: <FaCalendarAlt />,
-    },
-    {
       label: "Les lieux",
       target: "lieux",
       icon: <FaMapMarkerAlt />,
     },
     {
-      label: "Galerie",
-      target: "galerie",
-      icon: <FaImages />,
+      label: "Dress Code",
+      target: "dress-code",
+      icon: <FaTshirt />,
+    },
+    {
+      label: "Confirmation",
+      target: "confirmation",
+      icon: <FaCheckCircle />,
     },
     {
       label: "Compte à rebours",
       target: "compte-a-rebours",
       icon: <FaClock />,
     },
-    {
-      label: "Confirmation",
-      target: "confirmation",
-      icon: <FaCheckCircle />,
+   {
+      label: "Galerie",
+      target: "galerie",
+      icon: <FaImages />,
     },
   ];
 

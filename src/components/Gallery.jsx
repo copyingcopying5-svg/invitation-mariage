@@ -19,22 +19,6 @@ function Gallery() {
 
       <div className="max-w-6xl mx-auto">
 
-
-        <div className="text-center mb-12">
-
-          <p className="text-[#C8A54D] uppercase tracking-[4px] text-sm mb-4">
-            Souvenirs
-          </p>
-
-
-          <h2 className="text-5xl">
-            Notre galerie
-          </h2>
-
-        </div>
-
-
-
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
 
 
