@@ -20,14 +20,14 @@ function Location() {
           transition={{ duration: 0.8 }}
           className="mb-10"
         >
-          <h2 className="
+          <p className="
             text-3xl
-            md:text-4xl
-            text-gray-800
+            md:text-2xl
+            text-gray-200
             mb-8
           ">
             Lieu de l’événement
-          </h2>
+          </p>
 
           {/* CARTE */}
 

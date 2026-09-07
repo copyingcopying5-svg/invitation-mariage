@@ -97,9 +97,9 @@ function Countdown() {
           whileInView={{opacity:1,y:0}}
           transition={{duration:0.8}}
         >
-          <h2 className="text-5xl mb-12">
+          <h3 className="text-5xl mb-12">
             Plus que quelques instants
-          </h2>
+          </h3>
 
 
         </motion.div>

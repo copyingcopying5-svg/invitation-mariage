@@ -58,11 +58,7 @@ const handleSubmit = async (e) => {
 
         <div className="text-center mb-12">
 
-          <h2 className="
-            text-3xl
-            md:text-4xl
-            text-gray-800
-          ">
+          <h2 className="text-5xl mb-6">
             RSVP
           </h2>
 

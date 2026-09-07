@@ -4,7 +4,7 @@ function Event() {
   return (
     <section
       id="dress-code"
-      className="py-24 px-6 bg-[#FAF8F5]"
+      className="py-24 px-6 bg-[#F8EDEF]"
     >
       <div className="max-w-6xl mx-auto text-center">
 
@@ -42,12 +42,7 @@ function Event() {
 
           {/* THÈME */}
 
-          <p className="
-            text-3xl
-            md:text-4xl
-            text-gray-700
-            tracking-wide
-          ">
+          <p className="text-gray-600 leading-8">
             Chic & Glamour
           </p>
 

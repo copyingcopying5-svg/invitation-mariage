@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import img1 from "../assets/img2.jpg";
 
 function Story() {
   return (
@@ -13,7 +14,7 @@ function Story() {
           transition={{ duration: 0.8 }}
         >
           <img
-            src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc"
+            src={img1}
             alt="Couple"
             className="rounded-2xl shadow-xl w-full object-cover"
           />
@@ -28,26 +29,25 @@ function Story() {
         >
 
           <h2 className="text-5xl mb-6">
-            SAVE THE DATE
+            Save the date
           </h2>
 
-          <p className="text-gray-600 leading-8">
-            24 OCTOBRE 2026 à 18H00 <br />
-            AU CHAPITEAU SHEKINAH EVENT <br />
-            N°2, Croisement des avenues Munua et Dikuku. <br />
-            Golf Météo Faustin <br />
-            Réf : Arret la Katagaise 
+          <p className="font-['Poppins'] text-[16px] md:text-[20px] font-light leading-relaxed">
+            Samedi, 24 OCTOBRE 2026 à 18:00
           </p>
 
-          <p className="text-[#C8A54D] uppercase tracking-[4px] text-sm mb-4">
-            <br />DEUX COEURS UNE DESTINEE
+          <p className="font-['Poppins'] text-[20px] md:text-[24px] font-light leading-relaxed mt-2">
+            CHAPITEAU SHEKINAH EVENT
           </p>
 
+          <p className="text-gray-600 leading-8">
+            <br />Deux cœurs, une destinée.
+          </p>
 
           <p className="text-gray-600 leading-8">
-            Pas à pas la providence a guidé nos chemins jusqu'à ce point de rencontre parfait.
-            Ce qui n'était qu'un espoir est devenu notre plus belle certitude : marcher ensemble,
-            sous le regard du Très-Haut, pour tout le reste de notre voyage.
+            Pas à pas, la providence a guidé nos chemins <br /> jusqu'à ce point de rencontre parfait.<br />
+            Ce qui n'était qu'un espoir est devenu notre plus belle<br /> certitude : marcher ensemble,
+            sous le regard du Très-Haut,<br /> pour tout le reste de notre voyage.
           </p>
 
 
