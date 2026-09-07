@@ -45,9 +45,9 @@ function Story() {
           </p>
 
           <p className="text-gray-600 leading-8">
-            Pas à pas, la providence a guidé nos chemins <br /> jusqu'à ce point de rencontre parfait.<br />
-            Ce qui n'était qu'un espoir est devenu notre plus belle<br /> certitude : marcher ensemble,
-            sous le regard du Très-Haut,<br /> pour tout le reste de notre voyage.
+            Pas à pas, la providence a guidé nos chemins jusqu'à ce point de rencontre parfait.
+            Ce qui n'était qu'un espoir est devenu notre plus belle certitude : marcher ensemble,
+            sous le regard du Très-Haut, pour tout le reste de notre voyage.
           </p>
 
 
