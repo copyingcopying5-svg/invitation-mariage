@@ -26,11 +26,12 @@ function Hero() {
         transition={{ duration: 1 }}
         className="relative z-10 text-center text-white px-6"
       >
+        <br />
         <h1 className="text-6xl md:text-8xl font-bold mb-6">
           JEDIDIA
-          <br />
+          <br /><br />
           &
-          <br />
+          <br /><br />
           DEFI
         </h1>
       </motion.div>
