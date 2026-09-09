@@ -24,6 +24,12 @@ function Location() {
             Lieu de l’événement
           </h2>
 
+          <p className="text-gray-600 leading-8">
+            N°2, Croisement des avenues Munua et Dikuku <br />
+            Golf Météo Faustin <br />
+            Réf : Arret La Katangaise
+          </p><br />
+
           {/* CARTE */}
 
           <div
