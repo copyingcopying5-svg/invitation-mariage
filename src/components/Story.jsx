@@ -39,6 +39,11 @@ function Story() {
           <p className="font-['Poppins'] text-[20px] md:text-[24px] font-light leading-relaxed mt-2">
             CHAPITEAU SHEKINAH EVENT
           </p>
+          <p className="text-gray-600 leading-8">
+            N°2, Croisement des avenues Munua et Dikuku <br />
+            Golf Météo Faustin <br />
+            Réf : Arret La Katangaise
+          </p>
 
           <p className="text-gray-600 leading-8">
             <br />Deux cœurs, une destinée.
