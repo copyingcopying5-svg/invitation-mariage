@@ -1,8 +1,14 @@
 import { motion } from "framer-motion";
 
 function Location() {
-  const mapsUrl =
-    "https://www.google.com/maps?q=2%20croisement%20avenues%20Munua%20Dikuku%20Golf%20Meteo%20Faustin%20Lubumbashi&output=embed";
+  // Coordonnées GPS exactes du lieu
+  const latitude = -11.640610964056501;
+  const longitude = 27.422246124257697;
+ 
+  // URL Google Maps pour ouvrir le lieu
+  const mapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}&output=embed`;
+  // Lien pour ouvrir Google Maps directement
+  const googleMapsLink = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
 
   return (
     <section
