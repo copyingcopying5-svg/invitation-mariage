@@ -69,7 +69,7 @@ useEffect(() => {
               transition
             "
           >
-            Se déconnecter
+            Déconnexion
           </button>
 
         </div>
