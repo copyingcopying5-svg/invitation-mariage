@@ -1,5 +1,9 @@
 import { useRef, useState } from "react";
 
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./admin/Login";
+import Admin from "./admin/Admin";
+import { supabase } from "./lib/supabase";
 import Navigation from "./components/Navigation";
 import InvitationIntro from "./components/InvitationIntro";
 import Hero from "./components/Hero";
@@ -9,6 +13,42 @@ import Location from "./components/Location";
 import Gallery from "./components/Gallery";
 import Countdown from "./components/Countdown";
 import RSVP from "./components/RSVP";
+
+function ProtectedRoute({ children }) {
+  const [session, setSession] = useState(undefined);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setSession(data.session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  if (session === undefined) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF8F5]">
+        <p className="font-['Poppins'] text-sm text-[#777]">
+          Chargement...
+        </p>
+      </div>
+    );
+  }
+
+  if (!session) {
+    return <Navigate to="/admin/login" replace />;
+  }
+
+  return children;
+}
 
 function App() {
   const [invitationOpened, setInvitationOpened] = useState(false);
@@ -44,8 +84,18 @@ function App() {
     setInvitationOpened(true);
   };
 
+
+
   return (
-    <>
+
+    <BrowserRouter>
+      <Routes>
+
+        {/* Invitation */}
+        <Route
+          path="/"
+          element={
+            <>
       {/* MUSIQUE */}
       <audio
         ref={audioRef}
@@ -125,7 +175,33 @@ function App() {
           </main>
         </>
       )}
-    </>
+        </>
+          }
+        />
+        {/* Login */}
+        <Route
+          path="/admin/login"
+          element={<Login />}
+        />
+        {/* Administration protégée */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Toute URL inconnue */}
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
+
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 
