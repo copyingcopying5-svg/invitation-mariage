@@ -1,14 +1,36 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { supabase } from "../lib/supabase";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setError("");
+    setLoading(true);
+
     console.log("Tentative de connexion :", email);
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    console.log("Résultat Supabase :", data);
+    console.log("Erreur Supabase :", error);
+
+    if (error) {
+      setError(error.message);
+      setLoading(false);
+      return;
+    }
+
+    window.location.href = "/admin";
   };
 
   return (
@@ -38,7 +60,6 @@ function Login() {
         <div className="bg-white rounded-[28px] shadow-[0_10px_40px_rgba(0,0,0,0.08)] p-8 md:p-10">
           <form onSubmit={handleSubmit} className="space-y-6">
 
-            {/* Email */}
             <div>
               <label
                 htmlFor="email"
@@ -54,25 +75,10 @@ function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="admin@email.com"
                 required
-                className="
-                  w-full
-                  px-4
-                  py-3.5
-                  rounded-xl
-                  border
-                  border-gray-200
-                  bg-[#FAF8F5]
-                  outline-none
-                  font-['Poppins']
-                  text-sm
-                  text-[#333]
-                  focus:border-[#C8A54D]
-                  transition
-                "
+                className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-[#FAF8F5] outline-none font-['Poppins'] text-sm text-[#333] focus:border-[#C8A54D] transition"
               />
             </div>
 
-            {/* Mot de passe */}
             <div>
               <label
                 htmlFor="password"
@@ -88,42 +94,22 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                className="
-                  w-full
-                  px-4
-                  py-3.5
-                  rounded-xl
-                  border
-                  border-gray-200
-                  bg-[#FAF8F5]
-                  outline-none
-                  font-['Poppins']
-                  text-sm
-                  text-[#333]
-                  focus:border-[#C8A54D]
-                  transition
-                "
+                className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-[#FAF8F5] outline-none font-['Poppins'] text-sm text-[#333] focus:border-[#C8A54D] transition"
               />
             </div>
 
-            {/* Bouton */}
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-600 rounded-xl px-4 py-3 text-sm font-['Poppins']">
+                {error}
+              </div>
+            )}
+
             <button
               type="submit"
-              className="
-                w-full
-                bg-[#C8A54D]
-                text-white
-                py-4
-                rounded-xl
-                font-['Poppins']
-                font-semibold
-                text-sm
-                tracking-[0.5px]
-                hover:bg-[#b8943f]
-                transition
-              "
+              disabled={loading}
+              className="w-full bg-[#C8A54D] text-white py-4 rounded-xl font-['Poppins'] font-semibold text-sm tracking-[0.5px] hover:bg-[#b8943f] transition disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Se connecter
+              {loading ? "Connexion..." : "Se connecter"}
             </button>
 
           </form>
