@@ -14,7 +14,6 @@ const handleSubmit = async (e) => {
 
   if (
     !name.trim() ||
-    !email.trim() ||
     !phone.trim() ||
     !attendance
   ) {
@@ -150,7 +149,6 @@ const handleSubmit = async (e) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Votre adresse e-mail"
-                required
                 className="
                   w-full
                   px-5
