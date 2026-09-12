@@ -13,7 +13,7 @@ useEffect(() => {
     const { data, error } = await supabase
       .from("rsvp")
       .select("*")
-      .eq("attendance", "Oui, je serai présent(e)")
+      .eq("attendance", "present")
       .order("created_at", { ascending: false });
 
     if (error) {
